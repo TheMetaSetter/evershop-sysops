@@ -1,23 +1,21 @@
-version: '3.8'
-
 services:
   app:
     image: evershop/evershop:latest
     restart: always
     environment:
-      DB_HOST: database
+      DB_HOST: mydb-postgres-proxy.proxy-cdi00kw8glaz.ap-southeast-1.rds.amazonaws.com
       DB_PORT: 5432
-      DB_PASSWORD: postgres
-      DB_USER: postgres
-      DB_NAME: postgres
+      DB_PASSWORD: "*fJ8U#5~*><zx6JuS)V?KYJadqwA"
+      DB_USER: dbadmin
+      DB_NAME: master
     networks:
       - myevershop
     depends_on:
       - database
     ports:
-      - 3000:3000
-  
-  #The postgres database: 
+      - 443:3000
+
+  # The postgres database: 
   database:
     image: postgres:16
     restart: unless-stopped
